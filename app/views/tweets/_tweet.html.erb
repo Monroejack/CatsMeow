@@ -1,0 +1,14 @@
+
+  <div class="card">
+    <p> <%= image_tag tweet.user.avatar.url, class: 'avatar' %>
+      <%= link_to tweet.user.username, show_user_path(id: tweet.user.id) %>
+      <span> <i class="fas fa-clock"></i> </span>
+      <% if tweet.created_at > 1.day.ago %>
+      <i><%= time_ago_in_words(tweet.created_at) %> ago</i>
+      <% else %>
+      <i><%= tweet.created_at.strftime('%b%e') %> </i>
+      <% end %>
+    </p>
+
+    <p><%= tweet.message.html_safe %></p>
+  </div>

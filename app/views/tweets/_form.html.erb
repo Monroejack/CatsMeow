@@ -11,9 +11,8 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :message %>
-    <%= form.text_field :message, id: :tweet_message %>
+  <div class="form-group">
+    <%= form.text_field :message, id: :tweet_message, placeholder: 'What\'s going on right meow?', class:"form-control" %>
   </div>
 
 
@@ -21,6 +20,6 @@
 
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Meow It', class: 'btn btn-success' %>
   </div>
 <% end %>

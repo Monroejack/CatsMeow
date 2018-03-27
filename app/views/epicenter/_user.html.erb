@@ -1,0 +1,20 @@
+<div class='col-md-4'>
+  <div class='card'>
+    <div class='row'>
+      <div class='float-md-right'>
+      <%= image_tag user.avatar.url, class: 'avatar' %>
+      <%= link_to user.username, show_user_path(id: user.id) %>
+      <% if current_user.following.include?(user.id) %>
+        <%= link_to 'Following...', unfollow_path(id: user.id),
+        class:'btn btn-primary unfollow-btn float-right' %>
+      <% else %>
+        <%= link_to 'Follow', now_following_path(id: user.id),
+        class: 'btn btn-success float-right' %>
+      <% end %>
+      </div>
+    </div>
+    <p>
+      Bio: <%= user.bio %>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="jumbotron">
+</div>
+<hr />
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class='col-md-6'>
+      <b>Meows:</b> <%= current_user.tweets.count %>
+      <b>Following:</b> <%= pluralize current_user.following.count, 'cat' %>
+      <b>Followers:</b> <%= pluralize current_user.followers.count, 'cat' %>
+    </div>
+
+    <div class="col-md-3">
+
+      <% if current_user.following.include?(@user.id) %>
+      <%= link_to 'Following...', unfollow_path(id: @user.id), class:'btn btn-primary', id: 'unfollow-btn' %>
+      <% else %>
+      <%= link_to 'Follow', now_following_path(id: @user.id), class: 'btn btn-success' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class='card'>
+      <h5 class='card-title'><%=current_user.username %></h5>
+      <%= image_tag current_user.avatar.url, class: 'avatar', id: 'big_avatar' %>
+      <p>Name: <%= @user.name %> </p>
+      <p>Location: <%= @user.location %> </p>
+      <p>Bio: <%= @user.bio %> </p>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <%= render @user.tweets %>
+  </div>
+
+  <div class="col-md-3">
+    
+  </div>

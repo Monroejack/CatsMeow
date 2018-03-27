@@ -1,0 +1,6 @@
+<h1>All the Cool Cats</h1>
+<div class= "row">
+<% @users.each do |user| %>
+  <%= render 'user', user: user %>
+    <% end %>
+</div>

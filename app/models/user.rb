@@ -10,4 +10,18 @@ class User < ApplicationRecord
          #validations
         validates :username, presence: true, uniqueness: { case_sensitive: false }
         validates :username, length: { minimum: 3, maximum: 20 }
+
+        serialize :following, Array
+
+        def followers
+          followers = []
+          User.all.each do |u|
+            followers << u if u.following.include? self.id
+          end
+          followers
+        end
+
+        def username
+          "@#{super}"
+        end
 end

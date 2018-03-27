@@ -1,0 +1,55 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <div class='card'>
+        <div class='card-header'>
+      <h3> <%=current_user.name %> </h3>
+    </div>
+    <div class='card-body'>
+      <h5 class='card-title'><%=current_user.username %></h5>
+      <%= image_tag current_user.avatar.url, class: 'avatar', id: 'big_avatar' %>
+      <p>Meows: <%= current_user.tweets.count %></p>
+      <p>
+        <%= link_to following_path(id: current_user.id) do %>
+        Following: <%= pluralize current_user.following.count, 'cat' %>
+        <% end %>
+      </p>
+      <p>
+        <%= link_to followers_path(id: current_user.id) do %>
+        Followers: <%= pluralize current_user.followers.count, 'cat' %>
+        <% end %>
+      </p>
+      <hr>
+      <h3>Meowtags to know</h3>
+      <ol>
+        <% @top_tags.each do |tag| %>
+        <li>
+          <%= link_to tag.phrase, tag_tweets_path(id: tag) %>
+        </li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
+</div>
+
+    <div class="col-md-6">
+      <%= render 'tweets/form', tweet: @tweet %>
+  <h1><%=current_user.name %>'s Feed Right Meow</h1>
+  <p>Here's what these other cats are saying...</p>
+          <%= render @following_tweets %>
+    </div>
+
+    <div class="col-md-3">
+      <div class='card'>
+        <div class='card-header'>
+      <h3>Felines to follow</h3>
+        </div>
+        <div class='card-body'>
+          <h5 class='card-title'>
+          <%= link_to @most_tweets_user.username, show_user_path(id: @most_tweets_user) %>
+          with  <%= pluralize @most_tweets_user.tweets.count, 'meow' %></h5>
+      </div>
+    </div>
+  </div>
+</div>

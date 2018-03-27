@@ -1,0 +1,30 @@
+// Place all the styles related to the Epicenter controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'bootstrap';
+
+.navbar-brand {
+font-family: 'Capsuula'
+}
+
+h3 {
+  font-family: 'Capsuula'
+}
+
+#heading {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#big_avatar {
+  height: 80px;
+  width: 80px;
+  border: 2px solid;
+  border-radius: 80px;
+  padding: 5px;
+  display: inline;
+}
+.container {
+  padding: 10px;
+}

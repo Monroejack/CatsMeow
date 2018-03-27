@@ -1,0 +1,6 @@
+<h1>Cats <%= @user.username %> follows right meow...</h1>
+<div class= "row">
+<% @users.each do |user| %>
+  <%= render 'user', user: user %>
+    <% end %>
+</div>
